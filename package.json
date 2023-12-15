@@ -1,0 +1,15 @@
+{
+  "name": "roman-numeral-katas",
+  "version": "1.0.0",
+  "description": "Code Katas - Roman numerals task",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^29.7.0",
+    "prompt-sync": "^4.2.0"
+  }
+}
