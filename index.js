@@ -40,11 +40,36 @@ class RomanNumerals {
 
     oneOfSixRulesApply2() {
         for (var i = 0; i < this.letters.length; i++) {
-            // Check for four consecutive letter I's in the array
-            if (this.letters[i] === "I" && this.letters[i + 1] === "I" && this.letters[i + 2] === "I" && this.letters[i + 3] === "I") {
-                // Replace the four letters with IV
+            // Change all occurences of VIII to IX
+            if (this.letters[i] === "V" && this.letters[i + 1] === "I" && this.letters[i + 2] === "I" && this.letters[i + 3] === "I" && this.letters[i + 4] === "I") {
+                this.letters.splice(i, 5, "I", "X")
+            }
+
+            // Change all occurences of IIII to IV
+            else if (this.letters[i] === "I" && this.letters[i + 1] === "I" && this.letters[i + 2] === "I" && this.letters[i + 3] === "I") {
                 this.letters.splice(i, 4, "I", "V")
             }
+
+            // Change all occurences of LXXXX to XC
+              else if (this.letters[i] === "L" && this.letters[i + 1] === "X" && this.letters[i + 2] === "X" && this.letters[i + 3] === "X" && this.letters[i + 4] === "X") {
+                this.letters.splice(i, 5, "X", "C")
+            }
+
+            // Change all occurences of XXXX to XL
+            else if (this.letters[i] === "X" && this.letters[i + 1] === "X" && this.letters[i + 2] === "X" && this.letters[i + 3] === "X") {
+                this.letters.splice(i, 4, "X", "L")
+            }
+
+            // Change all occurences of DCCCC to CM
+            else if (this.letters[i] === "D" && this.letters[i + 1] === "C" && this.letters[i + 2] === "C" && this.letters[i + 3] === "C" && this.letters[i + 4] === "C") {
+                this.letters.splice(i, 5, "C", "M")
+            }
+
+            // Change all occurences of CCCC to CD
+            else if (this.letters[i] === "C" && this.letters[i + 1] === "C" && this.letters[i + 2] === "C" && this.letters[i + 3] === "C") {
+                this.letters.splice(i, 4, "C", "D")
+            }
+
         }
     }
 
@@ -71,6 +96,7 @@ class RomanNumerals {
             default:
                 break;
         }
+
     }
 
     addLetters() {
@@ -98,10 +124,10 @@ class RomanNumerals {
                 this.letters.push('I');
                 tempNumber -= 1;
             }
-        }
+            
+            this.oneOfSixRulesApply2();
 
-        // Check 6 substitution rules
-        this.oneOfSixRulesApply2();
+        }
     }
 
     run() {
@@ -109,7 +135,7 @@ class RomanNumerals {
         this.inputNumberWithinRange();
         this.zeroInputNumberReturnsEmptyString();
         this.addLetters();
-        this.oneOfSixRulesApply();
+        this.oneOfSixRulesApply2();
         console.log(this.letters.join(''));
         return this.numeralsArray;
     }

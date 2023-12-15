@@ -1,6 +1,6 @@
 const RomanNumerals = require('./index');
 
-describe('Check input number', () => {
+describe('Check input numbers correspond to correct Roman Numerals', () => {
 
     it('Should expect an integer as an input', () => {
         const romanNumerals = new RomanNumerals(5);
@@ -77,16 +77,42 @@ describe('Check input number', () => {
         expect(romanNumerals.letters).toStrictEqual(["M", "M", "M", "D", "C", "L", "X", "V", "I", "I", "I"]);
     })
 
-    it('4 to return IV', () => {
+})
+
+describe('Check six substitution rules', () => {
+    it('(Rule 1) 4 to return IV', () => {
         const romanNumerals = new RomanNumerals(4);
         romanNumerals.addLetters();
         expect(romanNumerals.letters).toStrictEqual(["I", "V"]);
     })
 
-    it('14 to return XIV', () => {
-        const romanNumerals = new RomanNumerals(14);
+    it('(Rule 2) 9 to return IX', () => {
+        const romanNumerals = new RomanNumerals(9);
         romanNumerals.addLetters();
-        expect(romanNumerals.letters).toStrictEqual(["X", "I", "V"]);
+        expect(romanNumerals.letters).toStrictEqual(["I", "X"]);
     })
 
+    it('(Rule 3) 40 to return XL', () => {
+        const romanNumerals = new RomanNumerals(40);
+        romanNumerals.addLetters();
+        expect(romanNumerals.letters).toStrictEqual(["X", "L"]);
+    })
+
+    it('(Rule 4) 90 to return XC', () => {
+        const romanNumerals = new RomanNumerals(90);
+        romanNumerals.addLetters();
+        expect(romanNumerals.letters).toStrictEqual(["X", "C"]);
+    })
+
+    it('(Rule 5) 400 to return CD', () => {
+        const romanNumerals = new RomanNumerals(400);
+        romanNumerals.addLetters();
+        expect(romanNumerals.letters).toStrictEqual(["C", "D"]);
+    })
+
+    it('(Rule 6) 900 to return CM', () => {
+        const romanNumerals = new RomanNumerals(900);
+        romanNumerals.addLetters();
+        expect(romanNumerals.letters).toStrictEqual(["C", "M"]);
+    })
 })
